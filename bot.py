@@ -7,6 +7,8 @@ import csv
 from sys import argv
 from random import randint
 
+import spacy
+
 
 def bot():
     tracking_list = ['@umarr_t']
@@ -21,8 +23,10 @@ def bot():
     listens for tweets w.r.t keywords in tracking_list and Retweets with a random Elon Musk
     meme alongwith mentioning the origin tweet.
     """
-    streamer = Streamer()
-    streamer.stream(filename, tracking_list, 'umarr_t')
+    # streamer = Streamer()
+    # streamer.stream(filename, tracking_list, 'umarr_t')
+
+
 
 
 def thoughts_about(topic, tweets):
@@ -54,25 +58,41 @@ def read_as_df(filename):
     df = pd.DataFrame({'id': ids, 'created_at': created_at, 'text': tweets})
     return df
 
-
-if __name__ == "__main__":
-    # filename = argv[1]
-    # tweets = read_as_df(filename)
-    # thoughts = argv[2]
+def tester():
+    filename = argv[1]
+    tweets = read_as_df(filename)
+    thoughts = argv[2]
 
     # # String starts with # to get the hashtag
     # # String contains 1+ alphanumeric characters
     # # String ends right before a space
     # regex = "#\w+\S"
 
-    # t = thoughts_about(thoughts, tweets).text.values.tolist()
+    t = thoughts_about(thoughts, tweets).text.values.tolist()
 
-    # if len(t) > 1:
-    #     index = randint(1, len(t))
-    #     print(t[index-1])
-    # else:
-    #     t = thoughts_about('Space', tweets).text.values.tolist()
-    #     index = randint(1, len(t))
-    #     print(t[index-1])
-    # print(t[0])
+    if len(t) > 0:
+        index = randint(1, len(t))
+        print(t[index-1])
+    else:
+        t = thoughts_about('Space', tweets).text.values.tolist()
+        index = randint(1, len(t))
+        print(t[index-1])
+
+
+
+
+if __name__ == "__main__":
+
+
+    # # String starts with # to get the hashtag
+    # # String contains 1+ alphanumeric characters
+    # # String ends right before a space
+    # regex = "#\w+\S"
+
     bot()
+    # tester()
+    # tester_spacy()
+    # nlp = spacy.load('en_core_web_sm')
+    # tokens = nlp(u'dog cat banana afskfsd')
+    # for token in tokens:
+    #     print(token.text, token.has_vector, token.vector_norm, token.is_oov)
