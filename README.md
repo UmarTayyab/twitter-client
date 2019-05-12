@@ -1,4 +1,4 @@
-# SABER | TWITTER CLIENT
+# Saber | Twitter Client
 
 Twitter client for twitter automation, tweet extraction, analysis and real-time streams.
 
