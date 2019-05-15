@@ -92,7 +92,3 @@ if __name__ == "__main__":
     bot()
     # tester()
     # tester_spacy()
-    # nlp = spacy.load('en_core_web_sm')
-    # tokens = nlp(u'dog cat banana afskfsd')
-    # for token in tokens:
-    #     print(token.text, token.has_vector, token.vector_norm, token.is_oov)
